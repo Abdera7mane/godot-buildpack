@@ -12,6 +12,7 @@ function get_godot_server() {
 	else
 		echo "Using cached Godot Server executable"
 	fi
+	echo "installation done"
 }
 
 function start_server() {

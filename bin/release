@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+BP_DIR=$(dirname $(dirname "$0"))
 source "$BP_DIR/func/setup.sh"
 
 cat << EOF
