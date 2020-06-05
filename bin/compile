@@ -20,4 +20,3 @@ export_env_dir() {
 }
 
 get_godot_server "3.2.1"
-start_server

@@ -16,6 +16,6 @@ function get_godot_server() {
 
 function start_server() {
 	echo "Starting Godot server"
-	$CACHE_DIR/godot_server.64 --main-pack $BUILD_DIR/main.pck
+	$CACHE_DIR/godot_server.64 --main-pack $BUILD_DIR/main.pck || exit 1
 
 }

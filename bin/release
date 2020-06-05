@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source "$BP_DIR/func/setup.sh"
+
+cat << EOF
+---
+default_process_types:
+  web: cd dist/ && start_server
+EOF
