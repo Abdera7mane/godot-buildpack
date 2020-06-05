@@ -19,4 +19,5 @@ export_env_dir() {
 	fi
 }
 
+mkdir -p $BUILD_DIR/godot
 get_godot_server "3.2.1"

@@ -7,14 +7,14 @@ function get_godot_server() {
 		echo "Downloading Godot Server v$VERSION"
 		curl -s $GODOT_SERVER_URL -o godot_server.zip || exit 1
 		unzip -o godot_server.zip
-		cp Godot_v${VERSION}-stable_linux_server.64 $CACHE_DIR/godot_server.64
-		mkdir -p "$BUILD_DIR/godot"
 		cp Godot_v${VERSION}-stable_linux_server.64 $BUILD_DIR/godot/godot_server.64
+		cp Godot_v${VERSION}-stable_linux_server.64 $CACHE_DIR/godot_server.64
 		touch "$CACHE_DIR/._sc_"
 	else
 		echo "Using cached Godot Server executable"
 		cp $CACHE_DIR/godot_server.64 $BUILD_DIR/godot/godot_server.64
 	fi
+	chmod +x $BUILD_DIR/godot/godot_server.64
 	echo "installation done"
 }
 

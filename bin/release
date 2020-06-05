@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: cd godot/ && chmod +x godot_server.64 && godot_server.64 --main-pack main.pck
+  web: godot/godot_server.64 --main-pack main.pck
 EOF
