@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 BP_DIR=$(dirname $(dirname "$0"))
+BUILD_DIR=$1
+CACHE_DIR=$2
 
 source "$BP_DIR/func/setup.sh"
 
