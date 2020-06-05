@@ -1,0 +1,34 @@
+#!/bin/sh
+
+BASE_DIR=$(dirname $(dirname "$0"))
+
+export_env_dir() {
+	env_dir=$1
+	whitelist_regex=${2:-''}
+	blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH|JAVA_OPTS)$'}
+	if [ -d "$env_dir" ]; then
+		for e in $(ls $env_dir); do
+			echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
+			export "$e=$(cat $env_dir/$e)"
+			:
+		done
+	fi
+}
+
+download_godot_server() {
+	local VERSION=$1
+	GODOT_SERVER_URL=https://downloads.tuxfamily.org/godotengine/${VERSION}/Godot_v${VERSION}-stable_linux_server.64.zip
+	if [ ! -f $CACHE_DIR/godot_server.64 ]; then
+		output_section "Downloading Godot Server"
+		curl -s $GODOT_SERVER_URL -o godot-server.zip || exit 1
+		unzip -o godot-server.zip
+		cp Godot_v${VERSION}-stable_linux_server.64.zip $CACHE_DIR/godot_server.64
+		touch "$CACHE_DIR/._sc_"
+	else
+		output_section "Using cached Godot Server executable"
+	fi
+}
+
+download_godot_server "3.2.1"
+output_section "Starting Godot Server"
+$CACHE_DIR/godot_headless.64 --main-pack main.pck
