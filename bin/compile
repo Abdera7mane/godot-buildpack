@@ -22,7 +22,7 @@ download_godot_server() {
 		echo "Downloading Godot Server"
 		curl -s $GODOT_SERVER_URL -o godot-server.zip || exit 1
 		unzip -o godot-server.zip
-		cp Godot_v${VERSION}-stable_linux_server.64 $CACHE_DIR/godot_server.64
+		cp Godot_v${VERSION}-stable_linux_server.64 $BUILD_DIR/godot_server.64
 		touch "$CACHE_DIR/._sc_"
 	else
 		echo "Using cached Godot Server executable"
@@ -31,4 +31,4 @@ download_godot_server() {
 
 download_godot_server "3.2.1"
 echo "Starting Godot Server"
-$CACHE_DIR/godot_server.64 --main-pack $1/main.pck
+$BUILD_DIR/godot_server.64 --main-pack $BUILD_DIR/main.pck
