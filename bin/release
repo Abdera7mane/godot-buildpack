@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-BP_DIR=$(dirname $(dirname "$0"))
-source "$BP_DIR/func/setup.sh"
-
 cat << EOF
 ---
 default_process_types:
-  web: start_server
+  web: godot_server.64 --main-pack main.pck
 EOF
