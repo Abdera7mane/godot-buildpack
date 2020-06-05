@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-get_godot_server() {
+function get_godot_server() {
 	local VERSION=$1
 	GODOT_SERVER_URL=https://downloads.tuxfamily.org/godotengine/${VERSION}/Godot_v${VERSION}-stable_linux_server.64.zip
 	if [ ! -f $CACHE_DIR/godot_server.64 ]; then
@@ -14,7 +14,7 @@ get_godot_server() {
 	fi
 }
 
-start_server() {
+function start_server() {
 	echo "Starting Godot server"
 	$CACHE_DIR/godot_server.64 --main-pack $BUILD_DIR/main.pck
 
