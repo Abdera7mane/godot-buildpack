@@ -2,7 +2,7 @@
 
 BP_DIR=$(dirname $(dirname "$0"))
 
-source "$BP_DIR/func/setup"
+source "$BP_DIR/func/setup.sh"
 
 export_env_dir() {
 	env_dir=$1
