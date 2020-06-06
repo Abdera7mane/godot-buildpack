@@ -27,6 +27,8 @@ mkdir -p $BUILD_DIR/.apt/var/run/screen
 mkdir -p $BUILD_DIR/godot
 mkdir -p $BUILD_DIR/func
 
+export SCREENDIR="\$HOME/.apt/var/run/screen"
+
 cp $BP_DIR/func/start $BUILD_DIR/func/start
 cp $BP_DIR/Aptfile $BUILD_DIR/Aptfile
 
