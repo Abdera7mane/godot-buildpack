@@ -23,7 +23,7 @@ export_env_dir() {
 		done
 	fi
 }
-
+mkdir -p $BUILD_DIR/.apt/var/run/screen
 mkdir -p $BUILD_DIR/godot
 mkdir -p $BUILD_DIR/func
 
