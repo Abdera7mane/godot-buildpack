@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  worker: ./godot/godot_server.64 --main-pack main.pck
+  worker: cd godot/ && ./godot_server.64 --main-pack ../main.pck --port=$PORT
 EOF
