@@ -28,6 +28,7 @@ mkdir -p $BUILD_DIR/godot
 mkdir -p $BUILD_DIR/func
 
 cp $BP_DIR/func/start $BUILD_DIR/func/start
+cp $BP_DIR/Aptfile $BUILD_DIR/Aptfile
 
 chmod +x $BUILD_DIR/func/start
 
