@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: cd godot/ && ./godot_server.64 --main-pack ../main.pck --port=$PORT
+  web: func/start $PORT
 EOF
