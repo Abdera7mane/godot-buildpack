@@ -14,7 +14,7 @@ function get_godot_server() {
 #		echo "Using cached Godot Server executable"
 #		cp $CACHE_DIR/godot_server.64 $BUILD_DIR/godot/godot_server.64
 #	fi
-#	chmod +x $BUILD_DIR/godot/godot_server.64
+	chmod +x $BUILD_DIR/godot/godot_server.64
 	echo "installation done"
 }
 
