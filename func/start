@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+PORT=${1:-${PORT:-3000}}
+
+echo "Starting Godot Server"
+eval "screen -L -h 2048 -dmS godot godot/godot_server.64 --main-pack main.pck"
+
+eval "ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => \"0.0.0.0\", :Port => ${port}, :MimeTypes => {\"rhtml\" => \"text/html\"}, :DocumentRoot => Dir.pwd).start' &"
+eval "while true; do sleep 600; echo "Refreshing dyno"; echo $HEROKU_URL; curl $HEROKU_URL; done"
