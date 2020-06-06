@@ -4,7 +4,7 @@ BP_DIR=$(dirname $(dirname "$0"))
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-source "$BP_DIR/func/setup.sh"
+source $BP_DIR/func/setup
 
 export_env_dir() {
 	env_dir=$1
@@ -20,4 +20,11 @@ export_env_dir() {
 }
 
 mkdir -p $BUILD_DIR/godot
+mkdir -p $BUILD_DIR/func
+
+cp $BP_DIR/func/start $BUILD_DIR/func/start
+
+chmod +x $BUILD_DIR/func/start
+
+
 get_godot_server "3.2.1"
