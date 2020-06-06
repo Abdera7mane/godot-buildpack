@@ -23,11 +23,15 @@ export_env_dir() {
 		done
 	fi
 }
-mkdir -p $BUILD_DIR/.apt/var/run/screen
+
 mkdir -p $BUILD_DIR/godot
 mkdir -p $BUILD_DIR/func
 
+mkdir -p $BUILD_DIR/.apt/var/run/screen
+cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
 export SCREENDIR="\$HOME/.apt/var/run/screen"
+EOF
+
 
 cp $BP_DIR/func/start $BUILD_DIR/func/start
 cp $BP_DIR/Aptfile $BUILD_DIR/Aptfile
