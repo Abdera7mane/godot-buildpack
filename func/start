@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PORT=${1:-${PORT:-3000}}
 
-mkdir -p .apt/var/run/screen
+mkdir -p run/screen
 chmod +x godot/godot_server.64
 
 echo "Starting Godot Server"
