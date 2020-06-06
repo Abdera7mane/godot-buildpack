@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PORT=${1:-${PORT:-3000}}
 
-cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
+cat <<EOF > ../.profile.d/000_apt.sh
 export PATH="\$HOME/.apt/usr/bin:\$PATH"
 export LD_LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LD_LIBRARY_PATH"
 export LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LIBRARY_PATH"
