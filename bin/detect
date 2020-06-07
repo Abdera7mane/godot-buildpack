@@ -1,17 +1,12 @@
 #!/bin/sh
 
-echo "Godot"
-exit 0
+BUILD_DIR=$1
 
-export_env_dir() {
-	env_dir=$1
-	whitelist_regex=${2:-''}
-	blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH|JAVA_OPTS)$'}
-	if [ -d "$env_dir" ]; then
-		for e in $(ls $env_dir); do
-			echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
-			export "$e=$(cat $env_dir/$e)"
-			:
-		done
+if [ -f $BUILD_DIR/Godotpack ]; then
+	PATH=$(cat $BUILD_DIR/Godotpack)
+	if [ -f "$BUILD_DIR/$PATH" ]; then
+		echo "Godot"
+		exit 0
 	fi
-}
+fi
+exit 1
