@@ -26,11 +26,6 @@ export_env_dir() {
 
 export_env_dir $3
 
-if [ -z "$MAIN_PACK" ]; then
-	echo "supply a MAIN_PACK config var in order to start your Godot Game server"
-	exit 1
-fi
-
 if [ -z "$NGROK_API_TOKEN" ]; then
   echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!"
   exit 1
