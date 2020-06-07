@@ -5,7 +5,7 @@ source func/ngrok
 
 start_ngrok
 NGROK_IP=$(get_ngrokip)
-echo NGROK_IP > index.rhtml
+echo $NGROK_IP > index.rhtml
 
 echo "Starting Godot Server"
 eval "screen -L -h 2048 -dmS godot ./godot_server.64 --main-pack ${MAIN_PACK} --PORT=${SERVER_PORT}"
