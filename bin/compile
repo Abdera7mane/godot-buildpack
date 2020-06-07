@@ -36,7 +36,11 @@ if [ -z "$NGROK_API_TOKEN" ]; then
   exit 1
 fi
 
-mkdir -p $BUILD_DIR/godot
+if [ -z "$SERVER_PORT" ]; then
+	echo "SERVER_PORT is missing, defaulting to 3000"
+	export SERVER_PORT=3000
+fi
+
 mkdir -p $BUILD_DIR/func
 
 #Install ngrok
@@ -72,9 +76,9 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
 done
 
 cp $BP_DIR/func/start $BUILD_DIR/func/start
-cp $BP_DIR/Aptfile $BUILD_DIR/Aptfile
+cp $BP_DIR/func/ngrok $BUILD_DIR/func/ngrok
 
 chmod +x $BUILD_DIR/func/start
-
+chmod +x $BUILD_DIR/func/ngrok
 
 get_godot_server $GODOT_VERSION
