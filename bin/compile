@@ -26,6 +26,8 @@ export_env_dir() {
 
 export_env_dir $3
 
+export MAIN_PACK=$(cat $BUILD_DIR/Godotpack)
+
 if [ -z "$NGROK_API_TOKEN" ]; then
   echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!"
   exit 1
