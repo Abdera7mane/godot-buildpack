@@ -1,20 +1,15 @@
 #!/usr/bin/env bash
 PORT=${1:-${PORT:-3000}}
 
-chmod +x godot/godot_server.64
+source ./ngrok
 
-echo "Starting ngrok TCP tunnel..."
-eval "bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${SERVER_PORT} | tee ngrok.log &"
-NGROK_PID=$!
-sleep 10
-CONTENT=$(cat ngrok.log)
-NGROK_IP=${$($CONTENT#*[Addr:)%%]*}
-echo "ngrok address: ${NGROK_IP}"
-echo $NGROK_IP > index.rhtml
-echo ""
+start_ngrok
+NGROK_IP=$(get_ngrokip)
+echo NGROK_IP > index.rhtml
 
 echo "Starting Godot Server"
-eval "screen -L -h 2048 -dmS godot ./godot/godot_server.64 --main-pack ${MAIN_PACK} --PORT=${SERVER_PORT}"
+eval "screen -L -h 2048 -dmS godot ./godot_server.64 --main-pack ${MAIN_PACK} --PORT=${SERVER_PORT}"
+export GODOT_SCREEN_PID=$!
 
 eval "ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => \"0.0.0.0\", :Port => ${PORT}, :MimeTypes => {\"rhtml\" => \"text/html\"}, :DocumentRoot => Dir.pwd).start' &"
 eval "while true; do sleep 600; echo "Refreshing dyno"; echo $HEROKU_URL; curl $HEROKU_URL; done"
