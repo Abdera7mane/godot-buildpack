@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PORT=${1:-${PORT:-3000}}
 
-source ./ngrok
+source func/ngrok
 
 start_ngrok
 NGROK_IP=$(get_ngrokip)
