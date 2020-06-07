@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+start_ngrok() {
+	echo "Starting ngrok TCP tunnel..."
+	eval "bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${SERVER_PORT} | tee ngrok.log &"
+	NGROK_PID=$!
+	echo ""
+}
+
+get_ngrokip() {
+	local CONTENT=$(cat ngrok.log)
+	CONTENT=${CONTENT#*[Addr:}
+	CONTENT=${CONTENT%%]*}
+	return $CONTENT
+}
+
+#stop all processes in case of a crash
+trap "kill $NGROK_PID $GODOT_SCREEN_PID" SIGTERM
+trap "kill -300 $NGROK_PID $GODOT_SCREEN_PID exit" SIGKILL
