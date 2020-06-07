@@ -6,10 +6,11 @@ chmod +x godot/godot_server.64
 echo "Starting ngrok TCP tunnel..."
 eval "bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${SERVER_PORT} | tee ngrok.log &"
 NGROK_PID=$!
+sleep 10
 CONTENT=$(cat ngrok.log)
 NGROK_IP=${$($CONTENT#*[Addr:)%%]*}
 echo "ngrok address: ${NGROK_IP}"
-echo NGROK_IP > index.rhtml
+echo $NGROK_IP > index.rhtml
 echo ""
 
 echo "Starting Godot Server"
