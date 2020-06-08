@@ -11,7 +11,7 @@ get_ngrokip() {
 	local CONTENT=$(cat ngrok.log)
 	CONTENT=${CONTENT#*[Addr:}
 	CONTENT=${CONTENT%%]*}
-	return $CONTENT
+	echo $CONTENT
 }
 
 #stop all processes in case of a crash
