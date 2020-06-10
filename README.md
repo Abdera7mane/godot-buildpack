@@ -46,4 +46,4 @@ to access Godot debug console execute this commands:
 heroku ps:exec
 screen -r godot
 ```
-this is useful to track your game server if you wrote some print statments, unfortunately godot console doesn't support inputs at the moment.
+this is useful to track your game server if you wrote some print statements, unfortunately godot console doesn't support inputs at the moment.
