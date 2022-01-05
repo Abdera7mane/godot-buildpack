@@ -45,12 +45,6 @@ unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "ngrok finnished isntalling"
 echo ""
 
-echo "Installing screen"
-#Install screen
-apt-get $APT_OPTIONS -y --force-yes -d install --reinstall screen
-
-mkdir -p $BUILD_DIR/.apt/var/run/screen
-mkdir -p $BUILD_DIR/.profile.d
 echo "exporting paths"
 cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
 export PATH="\$HOME/.apt/usr/bin:\$PATH"

@@ -40,10 +40,3 @@ git commit -m "finnished setup"
 git push heroku master
 ```
 You made it, if no error occurs during the last step you should get an ip address to connect to your game server in your app website  at`app_name.herokuapp.com`.
-## Extra
-to access Godot debug console execute this commands:
-```bash
-heroku ps:exec
-screen -r godot
-```
-this is useful to track your game server if you wrote some print statements, unfortunately godot console doesn't support inputs at the moment.
