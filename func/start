@@ -18,6 +18,6 @@ MAIN_PACK=$(cat Godotpack)
 echo "Starting Godot Server"
 export GODOT_SCREEN_PID=$!
 
-ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => \"0.0.0.0\", :Port => $PORT, :MimeTypes => {\"rhtml\" => \"text/html\"}, :DocumentRoot => Dir.pwd).start' &
-eval "while true; do sleep 600; echo "Refreshing dyno"; echo $HEROKU_URL; curl $HEROKU_URL; done" &
+ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => "0.0.0.0", :Port => $PORT, :MimeTypes => {"rhtml" => "text/html"}, :DocumentRoot => Dir.pwd).start' &
+eval 'while true; do sleep 600; echo "Refreshing dyno"; echo $HEROKU_URL; curl $HEROKU_URL; done' &
 ./godot_server.64 --main-pack $MAIN_PACK --PORT=$SERVER_PORT
