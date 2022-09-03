@@ -3,7 +3,7 @@ api = "0.8"
 [buildpack]
 
 id = "abdera7mane/godot"
-version = "0.0.0"
+version = "0.1.0"
 name = "godot"
 homepage = "https://github.com/abdera7mane/godot-buildpack"
 description = "Install godot headless and server"
