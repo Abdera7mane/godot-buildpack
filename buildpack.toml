@@ -1,0 +1,26 @@
+api = "0.8"
+
+[buildpack]
+
+id = "abdera7mane/godot"
+version = "0.0.0"
+name = "godot"
+homepage = "https://github.com/abdera7mane/godot-buildpack"
+description = "Install godot headless and server"
+keywords = ["godot", "gdscript", "game-engine"]
+
+  [[buildpack.licenses]]
+  
+  type = "MIT"
+  uri = "https://github.com/abdera7mane/godot-buildpack/blob/master/LICENSE"
+
+[metadata]
+
+godot_url = "https://downloads.tuxfamily.org/godotengine"
+godot_version = "3.5"
+godot_tag = "stable"
+godot_mono = false
+
+[[stacks]]
+
+id = "*"

@@ -1,0 +1,22 @@
+[package]
+
+name = "godot-buildpack"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+
+libcnb = "0.10.0"
+toml = "0.5.9"
+regex = "1.6.0"
+lazy_static = "1.4.0"
+ureq = "2.5.0"
+tempfile = "3.3.0"
+zip = "0.6.2"
+
+[dependencies.serde]
+
+version = "1.0.144"
+features = [
+    "derive"
+]
